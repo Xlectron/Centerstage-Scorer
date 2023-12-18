@@ -4,13 +4,13 @@
   <head>
     <script src="https://unpkg.com/konva@9.2.3/konva.min.js"></script>
     <meta charset="utf-8" />
-    <title>Konva Drag and Drop an Image Demo</title>
+    <title>Centerstage Scorer</title>
     <style>
       body {
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #f0f0f0;
+        background-color: grey;
       }
     </style>
   </head>
@@ -28,14 +28,25 @@
         });
 
         var layer = new Konva.Layer();
-        // darth vader
+        
         var pixel = new Konva.Image({
-          image: imageObj,
+          image: pixelObj,
           x: stage.width() / 2 - 200 / 2,
           y: stage.height() / 2 - 137 / 2,
           width: 300,
           height: 300,
           draggable: true,
+          rotation: 90
+        });
+
+        var backdrop = new Konva.Image({
+          image: backdropObj,
+          x: stage.width() / 2 - 200 / 2,
+          y: stage.height() / 2 - 137 / 2,
+          width: 300,
+          height: 300,
+          draggable: true,
+          rotation: 90
         });
 
         // add cursor styling
@@ -47,13 +58,23 @@
         });
 
         layer.add(pixel);
+        layer.add(backdrop);
+
         stage.add(layer);
       }
-      var imageObj = new Image();
-      imageObj.onload = function () {
+
+      var pixelObj = new Image();
+      pixelObj.onload = function () {
         drawImage(this);
       };
-      imageObj.src = 'https://github.com/Xlectron/Centerstage-Scorer/blob/main/Server/assets/green.png?raw=true';
+      pixelObj.src = 'https://github.com/Xlectron/Centerstage-Scorer/blob/main/Server/assets/green.png?raw=true';
+
+      var backdropObj = new Image();
+      backdropObj.onload = function () {
+        drawImage(this);
+      };
+      backdropObj.src = 'https://github.com/Xlectron/Centerstage-Scorer/blob/main/Server/assets/backdrop.png?raw=true';
+
     </script>
   </body>
 </html>
